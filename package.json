@@ -1,0 +1,14 @@
+{
+  "name": "maziv-software",
+  "version": "1.0.0",
+  "description": "Thanks for downloading this template!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Goodnews Daniel",
+  "license": "ISC",
+  "dependencies": {
+    "claymorphism-css": "^1.0.5"
+  }
+}
