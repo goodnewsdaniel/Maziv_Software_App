@@ -80,8 +80,10 @@ body {
 #cookiePopup button:hover {
   background-color: var(--color-secondary);
 }
-/*///////////////////////////////
-/////// CUSTOM SCROLLBAR
+/**
+** CUSTOM SCROLLBAR
+***/
+
 /* width */
 ::-webkit-scrollbar {
   width: 8px;
