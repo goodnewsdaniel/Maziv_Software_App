@@ -68,7 +68,6 @@ const subscribe = function () {
       }, 2500)
       if(subEmail.value != ""){
         subEmail.value = "";
-        subEmail.textContent ="Enter your email";
         return;
 
       }

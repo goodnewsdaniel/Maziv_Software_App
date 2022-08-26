@@ -345,6 +345,7 @@
           <span></span>
           <span></span>
         </div> -->
+
         <div
           class="container clay mb-5"
           data-aos="fade-up"
@@ -2887,8 +2888,6 @@
 
             <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
               <form
-                action="forms/contact.php"
-                method="post"
                 role="form"
                 class="php-email-form clay clay-card clay-card--white"
               >
@@ -2905,7 +2904,7 @@
                     />
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="name">Your Email</label>
+                    <label for="email">Your Email</label>
                     <input
                       type="email"
                       class="form-control"
@@ -2917,7 +2916,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="name">Subject</label>
+                  <label for="subject">Subject</label>
                   <input
                     type="text"
                     class="form-control"
@@ -2928,7 +2927,7 @@
                   />
                 </div>
                 <div class="form-group">
-                  <label for="name">Project Description</label>
+                  <label for="message">Project Description</label>
                   <textarea
                     class="form-control"
                     name="message"
@@ -3122,7 +3121,9 @@
                   ><i class="bx bxl-instagram"></i
                 ></a>
                 <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-                <a href="#" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+                <a href="https://wa.link/9f3j5f" class="whatsapp"
+                  ><i class="bi bi-whatsapp"></i
+                ></a>
               </div>
             </div>
           </div>
@@ -3138,7 +3139,9 @@
         </div>
         <div class="credits mr-auto">
           Created with <i class="bx bx-heart"></i> by
-          <a href="https://linkedin.com/"><strong>Goodnews Daniel</strong></a>
+          <a href="https://www.linkedin.com/in/goodnewsdaniel/"
+            ><strong>Goodnews Daniel</strong></a
+          >
         </div>
       </div>
       <!-- Waves -->
@@ -3210,6 +3213,8 @@
       })();
     </script>
     <script src="assets/js/emailsub.js"></script>
+    <!-- JS handling contact information -->
+    <script src="assets/js/contact.js"></script>
 
     <!-- MODALS SECTION START -->
     <!-- Service Modal Start -->
@@ -3240,12 +3245,7 @@
           <div class="modal-body">
             <div class="container-fluid">
               <div class="row">
-                <form
-                  action="forms/contact.php"
-                  method="post"
-                  role="form"
-                  class="php-email-form"
-                >
+                <form role="form" class="php-email-form">
                   <div class="row">
                     <div class="form-group col-md-12">
                       <input
@@ -3282,6 +3282,7 @@
                     <textarea
                       class="form-control rounded"
                       name="message"
+                      id="message"
                       rows="8"
                       placeholder="Kindly describe your requested service. If a project idea, provide a short explanation."
                       required
@@ -3311,7 +3312,7 @@
                     </div>
                   </div>
                   <div class="text-center">
-                    <button type="submit">Send Request</button>
+                    <button id="submit" type="submit">Send Request</button>
                   </div>
                 </form>
               </div>

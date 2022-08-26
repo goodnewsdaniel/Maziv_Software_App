@@ -2,27 +2,41 @@
 /**
      * Select elements/Variable Declarations
      */
- let subEmail = document.querySelector(".subEmail"),
- subSubmit = document.querySelector(".subSubmit"),
- sucAlert = document.getElementById("sub-success"),
- inputErrorAlert = document.getElementById("sub-inputError"),
- errorAlert = document.getElementById("sub-Error");
+ let full_name = document.getElementById("name"),
+    email= document.getElementById("email"),
+    subject = document.getElementById("subject"),
+    message = document.getElementById("message"),
+    submit =  document.getElementById("submit"),
+    sent_message = document.querySelector("sent-message"),
+    error_message = document.querySelector("error-message"),
+    sucAlert = document.getElementById("sub-success"),
+    inputErrorAlert = document.getElementById("sub-inputError"),
+    errorAlert = document.getElementById("sub-Error");
 
-const subscribe = function () {
+const processForm = function () {
     
     /**
      * This function validates inputs
      */    
     function validate() {
-      subSubmit = addEventListener("click", (e) => {
+      submit = addEventListener("click", (e) => {
         // e.preventDefault();
   
-        if (subEmail.value === "") {
+        if (full_name.value === "") {
           inputError();
-        } else {
+        }
+        else if(email.value == ""){
+            inputError();
+        }
+        else if(subject.value == ""){
+            inputError();
+        }
+        else if(message.value == ""){
+            inputError();
+        }
+        else {
           sendMail();
           success();
-          
         }
       });
     }
@@ -39,7 +53,6 @@ const subscribe = function () {
     function error(){
       errorAlert.classList.remove('d-none');
       errorAlert.style.color = "red";
-
       setTimeout(() => {
         errorAlert.classList.add('d-none');
       }, 2500)
@@ -66,13 +79,8 @@ const subscribe = function () {
       setTimeout(() => {
         sucAlert.classList.add('d-none');
       }, 2500)
-      if(subEmail.value != ""){
-        subEmail.value = "";
-        subEmail.textContent ="Enter your email";
-        return;
-
       }
-    }
+    
 
     /** 
      * This Function sends an email
