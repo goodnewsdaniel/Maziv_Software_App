@@ -4,7 +4,8 @@ const processForm = function () {
     * Select elements/Variable Declarations
   */
   
-    let full_name = document.getElementById("name"),
+    let contact_form = document.getElementById("ContactForm"),
+    full_name = document.getElementById("name"),
       email= document.getElementById("email"),
       subject = document.getElementById("subject"),
       message = document.getElementById("message"),
@@ -68,20 +69,21 @@ const processForm = function () {
         }, 2500)
         }
       
-      /** 
-       * This Function sends an email
-       * using the emailjs send() method
-       **/
+      //SendMail Function()
       function sendMail() {
-        emailjs.send("service_3mah583","template_l7n12vg",{
-          to_name: "Maziv Software Limited",
+        let serviceID = "service_3mah583",
+            templateID = "template_l7n12vg",
+            maziv ="Maziv Software Limited";
+
+        emailjs.send(serviceID,templateID,contact_form,{
+          to_name: maziv,
           from_email: email.value,
           message: message.value,
           name: full_name.value,
           email: email.value,
           reply_to: email.value,
           subject: subject.value,
-          });
+          }); 
       }
     }()
     
