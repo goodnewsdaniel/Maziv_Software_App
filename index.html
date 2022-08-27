@@ -2888,10 +2888,10 @@
 
             <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
               <form
-                id="contactForm"
+                id="ContactForm"
                 method="post"
                 role="form"
-                class="php-email-form clay clay-card clay-card--white"
+                class="email-form clay clay-card clay-card--white"
               >
                 <div class="row">
                   <div class="form-group col-md-6">
@@ -2947,19 +2947,22 @@
                     loading
                   </div>
 
-                  <!-- Error-Message Div -->
+                  <!-- Email Error Alert -->
                   <div
-                    class="error-message alert alert-success clay clay-card clay-card--white alert-dismissible fade show col-md-6 col-sm-12"
+                    class="clay clay-card clay-card--white alert alert-error alert-dismissible fade show col-md-6 col-sm-12 d-none"
+                    role="alert"
+                    id="email_error"
                   >
-                    <strong>Error!</strong>
+                    <strong>Error!</strong> Something went wrong. Try again.
                   </div>
-
                   <!-- Sent-Message Div -->
                   <div
-                    class="sent-message alert alert-success clay clay-card clay-card--white alert-dismissible fade show col-md-6 col-sm-12"
+                    class="clay clay-card clay-card--white alert alert-success alert-dismissible fade show col-md-6 col-sm-12 d-none"
+                    role="alert"
+                    id="email_success"
                   >
-                    <strong>Success!</strong> Your message has been sent. Thank
-                    you!
+                    <strong>Success!</strong> You've successfully sent your
+                    message!
                   </div>
                 </div>
                 <div class="text-center">
@@ -2985,11 +2988,12 @@
                 We will keep you regularly updated with our services and
                 products.
               </p>
-              <form>
+              <form id="subscribeForm" method="post">
                 <input
                   type="email"
                   name="email"
                   class="subEmail"
+                  id="subEmail"
                   placeholder="Your Email"
                   required
                 />
@@ -3123,7 +3127,10 @@
                   ><i class="bx bxl-instagram"></i
                 ></a>
                 <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-                <a href="https://wa.link/9f3j5f" class="whatsapp"
+                <a
+                  href="https://wa.link/9f3j5f"
+                  target="_blank"
+                  class="whatsapp"
                   ><i class="bi bi-whatsapp"></i
                 ></a>
               </div>
@@ -3172,13 +3179,6 @@
       </div>
     </footer>
     <!-- End Footer -->
-    <!-- Animated Background -->
-    <!-- <div class="background">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div> -->
 
     <!-- Preloader -->
     <div id="preloader"></div>
@@ -3214,14 +3214,143 @@
         emailjs.init("user_kCQ6DSaDUM0uTzD86zhxg");
       })();
     </script>
-    <script src="assets/js/emailsub.js"></script>
-    <!-- JS handling contact information -->
-    <script src="assets/js/index.js"></script>
+    <script type="text/javascript">
+      window.onload = function () {
+        document
+          .getElementById("ContactForm")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+            // these IDs from the previous
+            let serviceID = "service_3mah583",
+              templateID = "template_l7n12vg",
+              success = document.getElementById("email_success"),
+              error = document.getElementById("email_error");
+
+            emailjs.sendForm(serviceID, templateID, this).then(
+              function () {
+                success.classList.remove("d-none");
+                success.style.color = "SeaGreen";
+                setTimeout(() => {
+                  success.classList.add("d-none");
+                }, 2500);
+                clearForm();
+              },
+              function () {
+                error.classList.remove("d-none");
+                error.style.color = "red";
+                setTimeout(() => {
+                  error.classList.add("d-none");
+                }, 2500);
+                clearForm();
+              }
+            );
+          });
+      };
+
+      function clearForm() {
+        const name = document.getElementById("name"),
+          email = document.getElementById("email"),
+          subject = document.getElementById("subject"),
+          message = document.getElementById("message");
+
+        (name.value = ""),
+          (email.value = ""),
+          (subject.value = ""),
+          (message.value = "");
+      }
+    </script>
+
+    <!-- Subscription Form -->
+    <script>
+      window.onload = function () {
+        document
+          .getElementById("subscribeForm")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+            // these IDs from the previous
+            let serviceID = "service_3mah583",
+              templateID = "template_l7n12vg",
+              success = document.getElementById("sub-success"),
+              error = document.getElementById("sub-Error");
+
+            emailjs.sendForm(serviceID, templateID, this).then(
+              function () {
+                success.classList.remove("d-none");
+                success.style.color = "SeaGreen";
+                setTimeout(() => {
+                  success.classList.add("d-none");
+                }, 2500);
+                clearForm();
+              },
+              function () {
+                error.classList.remove("d-none");
+                error.style.color = "red";
+                setTimeout(() => {
+                  error.classList.add("d-none");
+                }, 2500);
+                clearForm();
+              }
+            );
+          });
+      };
+
+      function clearForm() {
+        email = document.getElementById("subEmail");
+        email.value = "";
+      }
+    </script>
+
+    <!-- Service Request Form -->
+    <script type="text/javascript">
+      window.onload = function () {
+        document
+          .getElementById("ServiceForm")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+            // these IDs from the previous
+            let serviceID = "service_3mah583",
+              templateID = "template_l7n12vg",
+              success = document.getElementById("service_email_success"),
+              error = document.getElementById("service_email_error");
+
+            emailjs.sendForm(serviceID, templateID, this).then(
+              function () {
+                success.classList.remove("d-none");
+                success.style.color = "SeaGreen";
+                setTimeout(() => {
+                  success.classList.add("d-none");
+                }, 2500);
+                clearForm();
+              },
+              function () {
+                error.classList.remove("d-none");
+                error.style.color = "red";
+                setTimeout(() => {
+                  error.classList.add("d-none");
+                }, 2500);
+                clearForm();
+              }
+            );
+          });
+      };
+
+      function clearForm() {
+        const name = document.getElementById("s_name"),
+          email = document.getElementById("s_email"),
+          subject = document.getElementById("s_subject"),
+          message = document.getElementById("s_message");
+
+        (name.value = ""),
+          (email.value = ""),
+          (subject.value = ""),
+          (message.value = "");
+      }
+    </script>
 
     <!-- MODALS SECTION START -->
     <!-- Service Modal Start -->
     <div
-      class="modal modal-md modal-lg modal-xl fade"
+      class="modal modal-sm modal-md modal-lg modal-xl fade"
       id="serviceModal"
       data-bs-backdrop="static"
       data-bs-keyboard="false"
@@ -3247,14 +3376,14 @@
           <div class="modal-body">
             <div class="container-fluid">
               <div class="row">
-                <form role="form" class="php-email-form">
+                <form id="ServiceForm" role="form" class="email-form">
                   <div class="row">
                     <div class="form-group col-md-12">
                       <input
                         type="text"
                         name="name"
                         class="form-control rounded-pill"
-                        id="name"
+                        id="s_name"
                         placeholder="Enter your name"
                         required
                       />
@@ -3264,7 +3393,7 @@
                         type="email"
                         class="form-control rounded-pill"
                         name="email"
-                        id="email"
+                        id="s_email"
                         placeholder="Enter your email"
                         required
                       />
@@ -3275,7 +3404,7 @@
                       type="text"
                       class="form-control rounded-pill"
                       name="subject"
-                      id="subject"
+                      id="s_subject"
                       placeholder="Enter service requested"
                       required
                     />
@@ -3284,7 +3413,7 @@
                     <textarea
                       class="form-control rounded"
                       name="message"
-                      id="message"
+                      id="s_message"
                       rows="8"
                       placeholder="Kindly describe your requested service. If a project idea, provide a short explanation."
                       required
@@ -3298,25 +3427,25 @@
                       loading
                     </div>
 
-                    <!-- Error-Message Div -->
+                    <!-- Email Error Alert -->
                     <div
-                      class="error-message alert alert-success clay clay-card clay-card--white alert-dismissible fade show col-md-6 col-sm-12"
+                      class="clay clay-card clay-card--white alert alert-error alert-dismissible fade show col-md-6 col-sm-12 d-none"
+                      role="alert"
+                      id="service_email_error"
                     >
-                      <strong>Error!</strong>
+                      <strong>Error!</strong>Try again.
                     </div>
-
                     <!-- Sent-Message Div -->
                     <div
-                      class="sent-message alert alert-success clay clay-card clay-card--white alert-dismissible fade show col-md-6 col-sm-12"
+                      class="clay clay-card clay-card--white alert alert-success alert-dismissible fade show col-md-6 col-sm-12 d-none"
+                      role="alert"
+                      id="service_email_success"
                     >
-                      <strong>Success!</strong> Your message has been sent.
-                      Thank you!
+                      <strong>Success!</strong> Message successfully sent!
                     </div>
                   </div>
                   <div class="text-center">
-                    <button id="submit_request" type="submit">
-                      Send Request
-                    </button>
+                    <button id="submit" type="submit">Send Request</button>
                   </div>
                 </form>
               </div>

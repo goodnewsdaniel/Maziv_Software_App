@@ -1,91 +1,44 @@
-import "/assets/vendor/emailjs-com/dist/email"
-import "/assets/vendor/emailjs-com/dist/email.min"
+//Import Email Library
+import emailjs from "@emailjs/browser"
+window.onload = function () {
+  document
+    .getElementById("ContactForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      // these IDs from the previous
+      let serviceID = "service_3mah583",
+        templateID = "template_l7n12vg",
+        success = document.getElementById("email_success"),
+        error = document.getElementById("email_error");
 
-const processForm = function () {
-  /**
-  * Select elements/Variable Declarations
-*/
+      emailjs.sendForm(serviceID, templateID, this).then(
+        function () {
+          success.classList.remove("d-none");
+          success.style.color = "SeaGreen";
+          setTimeout(() => {
+            success.classList.add("d-none");
+          }, 2500);
+        },
+        function () {
+          error.classList.remove("d-none");
+          error.style.color = "red";
+          setTimeout(() => {
+            error.classList.add("d-none");
+          }, 2500);
+        }
+      );
+      clearForm();
+    });
+};
 
-  let full_name = document.getElementById("name"),
-    email= document.getElementById("email"),
+function clearForm() {
+  const name = document.getElementById("name"),
+    email = document.getElementById("email"),
     subject = document.getElementById("subject"),
-    message = document.getElementById("message"),
-    submit =  document.getElementById("submit"),
-    sent_message = document.querySelector("sent-message"),
-    error_message = document.querySelector("error-message");
+    message = document.getElementById("message");
 
-    /**
-     * This function validates inputs
-     */    
-    function validate() {
-      submit = addEventListener("click", (e) => {
-        e.preventDefault();
-  
-        if (full_name.value == "") {
-          inputError();
-        }
-        else if(email.value == ""){
-            inputError();
-        }
-        else if(subject.value == ""){
-            inputError();
-        }
-        else if(message.value == ""){
-            inputError();
-        }
-        else {
-          sendMail();
-          success();
-        }
-      });
-    }
-
-    /**Call function Validate */
-    validate();
-
-
-    /** 
-     * This Function displays error 
-     * for unsuccessful subscription, and
-     * closes automatically
-     **/
-    function error(){
-      error_message.classList.remove('d-none');
-      error_message.style.color = "red";
-      setTimeout(() => {
-        error_message.classList.add('d-none');
-      }, 2500)
-    }
-
-  
-    function inputError(){
-      // subEmail.focus();
-      
-    }
-
-    function success(){
-      sent_message.classList.remove('d-none');
-  
-      setTimeout(() => {
-        sent_message.classList.add('d-none');
-      }, 2500)
-      }
-    
-    /** 
-     * This Function sends an email
-     * using the emailjs send() method
-     **/
-    function sendMail() {
-      emailjs.send("service_3mah583","template_l7n12vg",{
-        to_name: "Maziv Software Limited",
-        from_email: email.value,
-        message: message.value,
-        name: full_name.value,
-        email: email.value,
-        reply_to: email.value,
-        subject: subject.value,
-        });
-    }
-
-  }()
-  
+  (name.value = ""),
+    (email.value = ""),
+    (subject.value = ""),
+    (message.value = "");
+}

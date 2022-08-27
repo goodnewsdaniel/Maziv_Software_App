@@ -410,7 +410,7 @@ h6 {
 /* Custom_Btn Ends */
 
 /* Contact Form Start */
-.php-email-form {
+.email-form {
   width: 100%;
   border: 2px solid var(--color-primary-light);
   padding: 30px;
@@ -418,11 +418,11 @@ h6 {
   border-radius: 50px;
 }
 
-.php-email-form .form-group {
+.email-form .form-group {
   padding-bottom: 8px;
 }
 
-.php-email-form .validate {
+.email-form .validate {
   display: none;
   color: red;
   margin: 0 0 15px 0;
@@ -432,7 +432,7 @@ h6 {
   border: 3px solid var(--color-white);
 }
 
-.php-email-form .error-message {
+.email-form .error-message {
   display: none;
   color: red;
   background: var(--color-white);
@@ -443,11 +443,11 @@ h6 {
   border-radius: 50px;
 }
 
-.php-email-form .error-message br + br {
+.email-form .error-message br + br {
   margin-top: 25px;
 }
 
-.php-email-form .sent-message {
+.email-form .sent-message {
   display: none;
   color: var(--color-green);
   background: var(--color-white);
@@ -458,14 +458,14 @@ h6 {
   border-radius: 50px;
 }
 
-.php-email-form .loading {
+.email-form .loading {
   display: none;
   background: var(--color-white);
   text-align: center;
   padding: 15px;
 }
 
-.php-email-form .loading:before {
+.email-form .loading:before {
   content: "";
   display: inline-block;
   border-radius: 50%;
@@ -478,37 +478,37 @@ h6 {
   animation: animate-loading 1s linear infinite;
 }
 
-.php-email-form .form-group {
+.email-form .form-group {
   margin-bottom: 20px;
 }
 
-.php-email-form label {
+.email-form label {
   padding-bottom: 8px;
   color: var(--color-primary-light);
 }
 
-.php-email-form input,
-.php-email-form textarea {
+.email-form input,
+.email-form textarea {
   box-shadow: none;
   font-size: 14px;
   border-radius: 10px;
   border-bottom: 2px solid var(--color-primary-light);
 }
 
-.php-email-form input:focus,
-.php-email-form textarea:focus {
+.email-form input:focus,
+.email-form textarea:focus {
   border-color: var(--color-primary-light);
 }
 
-.php-email-form input {
+.email-form input {
   height: 44px;
 }
 
-.php-email-form textarea {
+.email-form textarea {
   padding: 10px 12px;
 }
 
-.php-email-form button[type="submit"] {
+.email-form button[type="submit"] {
   background: var(--color-primary-light);
   border: 0;
   padding: 12px 34px;
@@ -518,12 +518,12 @@ h6 {
 }
 
 @media screen and (max-width: 768px) {
-  .php-email-form button[type="submit"] {
+  .email-form button[type="submit"] {
     width: 100%;
   }
 }
 
-.php-email-form button[type="submit"]:hover {
+.email-form button[type="submit"]:hover {
   background: var(--color-primary);
   border: 2px solid var(--color-primary-light);
 }
