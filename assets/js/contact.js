@@ -1,28 +1,27 @@
-// Mail Subscription
-/**
-     * Select elements/Variable Declarations
-     */
- let full_name = document.getElementById("name"),
+import "/assets/vendor/emailjs-com/dist/email"
+import "/assets/vendor/emailjs-com/dist/email.min"
+
+const processForm = function () {
+  /**
+  * Select elements/Variable Declarations
+*/
+
+  let full_name = document.getElementById("name"),
     email= document.getElementById("email"),
     subject = document.getElementById("subject"),
     message = document.getElementById("message"),
     submit =  document.getElementById("submit"),
     sent_message = document.querySelector("sent-message"),
-    error_message = document.querySelector("error-message"),
-    sucAlert = document.getElementById("sub-success"),
-    inputErrorAlert = document.getElementById("sub-inputError"),
-    errorAlert = document.getElementById("sub-Error");
+    error_message = document.querySelector("error-message");
 
-const processForm = function () {
-    
     /**
      * This function validates inputs
      */    
     function validate() {
       submit = addEventListener("click", (e) => {
-        // e.preventDefault();
+        e.preventDefault();
   
-        if (full_name.value === "") {
+        if (full_name.value == "") {
           inputError();
         }
         else if(email.value == ""){
@@ -51,44 +50,37 @@ const processForm = function () {
      * closes automatically
      **/
     function error(){
-      errorAlert.classList.remove('d-none');
-      errorAlert.style.color = "red";
+      error_message.classList.remove('d-none');
+      error_message.style.color = "red";
       setTimeout(() => {
-        errorAlert.classList.add('d-none');
+        error_message.classList.add('d-none');
       }, 2500)
-      // subEmail.focus();
     }
 
-    /** 
-     * This Function receives focus 
-     * for invalid or empty inputs, and
-     * closes automatically
-     **/
+  
     function inputError(){
       // subEmail.focus();
+      
     }
 
-    /** 
-     * This Function displays a success  message 
-     * for successful subscription, and
-     * closes automatically
-     **/
     function success(){
-      sucAlert.classList.remove('d-none');
+      sent_message.classList.remove('d-none');
   
       setTimeout(() => {
-        sucAlert.classList.add('d-none');
+        sent_message.classList.add('d-none');
       }, 2500)
       }
     
-
     /** 
      * This Function sends an email
      * using the emailjs send() method
      **/
     function sendMail() {
-      emailjs.send("service_3mah583", "template_l7n12vg", {
-        from_email: subEmail.value,
+        emailjs.send("service_3mah583", "template_l7n12vg", {
+        from_name: full_name.value,
+        from_email: email.value,
+        from_subject: subject.value,
+        from_message: message.value,
       });
     }
 

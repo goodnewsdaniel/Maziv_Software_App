@@ -1,28 +1,41 @@
-// Mail Subscription
 /**
-     * Select elements/Variable Declarations
-     */
- let subEmail = document.querySelector(".subEmail"),
- subSubmit = document.querySelector(".subSubmit"),
- sucAlert = document.getElementById("sub-success"),
- inputErrorAlert = document.getElementById("sub-inputError"),
- errorAlert = document.getElementById("sub-Error");
+  * Select elements/Variable Declarations
+*/
+let full_name = document.getElementById("name"),
+email= document.getElementById("email"),
+subject = document.getElementById("subject"),
+message = document.getElementById("message"),
+submit =  document.getElementById("submit"),
+sent_message = document.querySelector("sent-message"),
+error_message = document.querySelector("error-message"),
+sucAlert = document.getElementById("sub-success"),
+inputErrorAlert = document.getElementById("sub-inputError"),
+errorAlert = document.getElementById("sub-Error");
 
-const subscribe = function () {
+const processForm = function () {
     
     /**
      * This function validates inputs
      */    
-    function validate() {
-      subSubmit = addEventListener("click", (e) => {
-        // e.preventDefault();
+     function validate() {
+      submit = addEventListener("click", (e) => {
+        e.preventDefault();
   
-        if (subEmail.value === "") {
+        if (full_name.value == "") {
           inputError();
-        } else {
+        }
+        else if(email.value == ""){
+            inputError();
+        }
+        else if(subject.value == ""){
+            inputError();
+        }
+        else if(message.value == ""){
+            inputError();
+        }
+        else {
           sendMail();
           success();
-          
         }
       });
     }
@@ -33,31 +46,26 @@ const subscribe = function () {
 
     /** 
      * This Function displays error 
-     * for unsuccessful subscription, and
-     * closes automatically
      **/
     function error(){
       errorAlert.classList.remove('d-none');
       errorAlert.style.color = "red";
-
       setTimeout(() => {
         errorAlert.classList.add('d-none');
       }, 2500)
-      // subEmail.focus();
+      
     }
 
     /** 
-     * This Function receives focus 
-     * for invalid or empty inputs, and
-     * closes automatically
+     * Error Function
      **/
     function inputError(){
       // subEmail.focus();
+      
     }
 
     /** 
-     * This Function displays a success  message 
-     * for successful subscription, and
+     * This Function displays a success  message and
      * closes automatically
      **/
     function success(){
@@ -66,12 +74,8 @@ const subscribe = function () {
       setTimeout(() => {
         sucAlert.classList.add('d-none');
       }, 2500)
-      if(subEmail.value != ""){
-        subEmail.value = "";
-        return;
-
       }
-    }
+    
 
     /** 
      * This Function sends an email
@@ -79,7 +83,10 @@ const subscribe = function () {
      **/
     function sendMail() {
       emailjs.send("service_3mah583", "template_l7n12vg", {
-        from_email: subEmail.value,
+        from_name: full_name.value,
+        from_email: email.value,
+        from_subject: subject.value,
+        from_message: message.value,
       });
     }
 
