@@ -75,7 +75,7 @@ const processForm = function () {
             templateID = "template_l7n12vg",
             maziv ="Maziv Software Limited";
 
-        emailjs.send(serviceID,templateID,contact_form,{
+        emailjs.send(serviceID,templateID,{
           to_name: maziv,
           from_email: email.value,
           message: message.value,
