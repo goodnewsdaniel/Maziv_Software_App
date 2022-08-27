@@ -17,6 +17,7 @@ const processForm = function () {
        * This function validates inputs
        */    
       function validate() {
+        submit =  document.getElementById("submit");
         submit = addEventListener("click", (e) => {
           e.preventDefault();
     
