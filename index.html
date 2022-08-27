@@ -3216,45 +3216,7 @@
     </script>
     <script src="assets/js/emailsub.js"></script>
     <!-- JS handling contact information -->
-    <!-- <script src="assets/js/contact.js"></script> -->
-    <!-- SMTP Library -->
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script type="text/javascript">
-      function sendEmail() {
-        let Host = "smtp.gmail.com",
-          Username = "gee4luv@gmail.com",
-          Password = "G00dan1sm!",
-          Me = "gee4luv@gmail.com",
-          From = document.getElementById(email),
-          Sub = document.getElementById(subject),
-          By = document.getElementById(message);
-
-        let Sender = From.value,
-          Subject = Sub.value,
-          Body = By.value;
-
-        Email.send({
-          Host: Host,
-          Username: Username,
-          Password: Password,
-          To: Me,
-          From: Sender,
-          Subject: Subject,
-          Body: Body,
-        }).then(function (message) {
-          //alert("Mail sent successfully");
-          success();
-        });
-      }
-
-      function success() {
-        let sent_message = document.querySelector("sent-message");
-        sent_message.classList.remove("d-none");
-        setTimeout(() => {
-          sent_message.classList.add("d-none");
-        }, 2500);
-      }
-    </script>
+    <script src="assets/js/index.js"></script>
 
     <!-- MODALS SECTION START -->
     <!-- Service Modal Start -->

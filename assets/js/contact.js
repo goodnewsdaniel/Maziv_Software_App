@@ -76,12 +76,15 @@ const processForm = function () {
      * using the emailjs send() method
      **/
     function sendMail() {
-        emailjs.send("service_3mah583", "template_l7n12vg", {
-        from_name: full_name.value,
+      emailjs.send("service_3mah583","template_l7n12vg",{
+        to_name: "Maziv Software Limited",
         from_email: email.value,
-        from_subject: subject.value,
-        from_message: message.value,
-      });
+        message: message.value,
+        name: full_name.value,
+        email: email.value,
+        reply_to: email.value,
+        subject: subject.value,
+        });
     }
 
   }()
