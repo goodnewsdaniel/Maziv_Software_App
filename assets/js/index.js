@@ -1,4 +1,4 @@
-
+import emailjs from "emailjs-com"
 const processForm = function () {
     /**
     * Select elements/Variable Declarations
@@ -86,5 +86,6 @@ const processForm = function () {
           subject: subject.value,
           }); 
       }
+
     }()
     
