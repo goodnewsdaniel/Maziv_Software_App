@@ -3227,7 +3227,7 @@
             let success = document.getElementById("email_success"),
               error = document.getElementById("email_error");
 
-            emailjs.sendForm(serviceID, templateID, this).then(
+            emailjs.send(serviceID, templateID, this).then(
               function () {
                 success.classList.remove("d-none");
                 success.style.color = "SeaGreen";
@@ -3274,7 +3274,7 @@
             let success = document.getElementById("sub-success"),
               error = document.getElementById("sub-Error");
 
-            emailjs.sendForm(serviceID, templateID, this).then(
+            emailjs.send(serviceID, templateID, this).then(
               function () {
                 success.classList.remove("d-none");
                 success.style.color = "SeaGreen";
@@ -3313,7 +3313,7 @@
             let success = document.getElementById("service_email_success"),
               error = document.getElementById("service_email_error");
 
-            emailjs.sendForm(serviceID, templateID, this).then(
+            emailjs.send(serviceID, templateID, this).then(
               function () {
                 success.classList.remove("d-none");
                 success.style.color = "SeaGreen";
