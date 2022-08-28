@@ -3214,6 +3214,7 @@
         emailjs.init("user_kCQ6DSaDUM0uTzD86zhxg");
       })();
     </script>
+    <!-- ContactForm Email -->
     <script type="text/javascript">
       window.onload = function () {
         document
@@ -3226,7 +3227,7 @@
             let success = document.getElementById("email_success"),
               error = document.getElementById("email_error");
 
-            emailjs.send(serviceID, templateID, this).then(
+            emailjs.sendForm(serviceID, templateID, this).then(
               function () {
                 success.classList.remove("d-none");
                 success.style.color = "SeaGreen";
@@ -3261,9 +3262,90 @@
     </script>
 
     <!-- Subscription Form -->
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+      window.onload = function () {
+        document
+          .getElementById("subscribeForm")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+            //IDs
+            const serviceID = "service_3mah583",
+              templateID = "template_l7n12vg";
+            let success = document.getElementById("sub-success"),
+              error = document.getElementById("sub-Error");
+
+            emailjs.sendForm(serviceID, templateID, this).then(
+              function () {
+                success.classList.remove("d-none");
+                success.style.color = "SeaGreen";
+                setTimeout(() => {
+                  success.classList.add("d-none");
+                }, 2500);
+                clearForm();
+              },
+              function () {
+                error.classList.remove("d-none");
+                error.style.color = "red";
+                setTimeout(() => {
+                  error.classList.add("d-none");
+                }, 2500);
+                clearForm();
+              }
+            );
+          });
+      };
+
+      function clearForm() {
+        email = document.getElementById("subEmail");
+        email.value = "";
+      }
+    </script>
     <!-- Service Request Form -->
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+      window.onload = function () {
+        document
+          .getElementById("ServiceForm")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+            //IDs
+            const serviceID = "service_3mah583",
+              templateID = "template_l7n12vg";
+            let success = document.getElementById("service_email_success"),
+              error = document.getElementById("service_email_error");
+
+            emailjs.sendForm(serviceID, templateID, this).then(
+              function () {
+                success.classList.remove("d-none");
+                success.style.color = "SeaGreen";
+                setTimeout(() => {
+                  success.classList.add("d-none");
+                }, 2500);
+                clearForm();
+              },
+              function () {
+                error.classList.remove("d-none");
+                error.style.color = "Red";
+                setTimeout(() => {
+                  error.classList.add("d-none");
+                }, 2500);
+                clearForm();
+              }
+            );
+          });
+      };
+
+      function clearForm() {
+        const name = document.getElementById("s_name"),
+          email = document.getElementById("s_email"),
+          subject = document.getElementById("s_subject"),
+          message = document.getElementById("s_message");
+
+        (name.value = ""),
+          (email.value = ""),
+          (subject.value = ""),
+          (message.value = "");
+      }
+    </script>
 
     <!-- MODALS SECTION START -->
     <!-- Service Modal Start -->
