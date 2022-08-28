@@ -3220,13 +3220,13 @@
           .getElementById("ContactForm")
           .addEventListener("submit", function (event) {
             event.preventDefault();
-            // these IDs from the previous
-            let serviceID = "service_3mah583",
-              templateID = "template_l7n12vg",
-              success = document.getElementById("email_success"),
+            // IDs
+            const serviceID = "service_3mah583",
+              templateID = "template_l7n12vg";
+            let success = document.getElementById("email_success"),
               error = document.getElementById("email_error");
 
-            emailjs.sendForm(serviceID, templateID, this).then(
+            emailjs.send(serviceID, templateID, this).then(
               function () {
                 success.classList.remove("d-none");
                 success.style.color = "SeaGreen";
@@ -3261,91 +3261,9 @@
     </script>
 
     <!-- Subscription Form -->
-    <script>
-      window.onload = function () {
-        document
-          .getElementById("subscribeForm")
-          .addEventListener("submit", function (event) {
-            event.preventDefault();
-            // these IDs from the previous
-            let serviceID = "service_3mah583",
-              templateID = "template_l7n12vg",
-              success = document.getElementById("sub-success"),
-              error = document.getElementById("sub-Error");
-
-            emailjs.sendForm(serviceID, templateID, this).then(
-              function () {
-                success.classList.remove("d-none");
-                success.style.color = "SeaGreen";
-                setTimeout(() => {
-                  success.classList.add("d-none");
-                }, 2500);
-                clearForm();
-              },
-              function () {
-                error.classList.remove("d-none");
-                error.style.color = "red";
-                setTimeout(() => {
-                  error.classList.add("d-none");
-                }, 2500);
-                clearForm();
-              }
-            );
-          });
-      };
-
-      function clearForm() {
-        email = document.getElementById("subEmail");
-        email.value = "";
-      }
-    </script>
-
+    <script type="text/javascript"></script>
     <!-- Service Request Form -->
-    <script type="text/javascript">
-      window.onload = function () {
-        document
-          .getElementById("ServiceForm")
-          .addEventListener("submit", function (event) {
-            event.preventDefault();
-            // these IDs from the previous
-            let serviceID = "service_3mah583",
-              templateID = "template_l7n12vg",
-              success = document.getElementById("service_email_success"),
-              error = document.getElementById("service_email_error");
-
-            emailjs.sendForm(serviceID, templateID, this).then(
-              function () {
-                success.classList.remove("d-none");
-                success.style.color = "SeaGreen";
-                setTimeout(() => {
-                  success.classList.add("d-none");
-                }, 2500);
-                clearForm();
-              },
-              function () {
-                error.classList.remove("d-none");
-                error.style.color = "red";
-                setTimeout(() => {
-                  error.classList.add("d-none");
-                }, 2500);
-                clearForm();
-              }
-            );
-          });
-      };
-
-      function clearForm() {
-        const name = document.getElementById("s_name"),
-          email = document.getElementById("s_email"),
-          subject = document.getElementById("s_subject"),
-          message = document.getElementById("s_message");
-
-        (name.value = ""),
-          (email.value = ""),
-          (subject.value = ""),
-          (message.value = "");
-      }
-    </script>
+    <script type="text/javascript"></script>
 
     <!-- MODALS SECTION START -->
     <!-- Service Modal Start -->
@@ -3486,7 +3404,7 @@
           <div class="modal-body">
             <div class="container">
               <div class="row">
-                <h6 style="text-align: left">Effective Date: 2022-03-30</h6>
+                <h6 style="text-align: left">Effective Date: 2022-9-30</h6>
                 <p>1. <b>Introduction</b></p>
                 <p>Welcome to <b> Maziv Software Ltd</b>.</p>
                 <p>

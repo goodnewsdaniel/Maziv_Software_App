@@ -1,94 +1,41 @@
-/**
-  * Select elements/Variable Declarations
-*/
-let full_name = document.getElementById("name"),
-email= document.getElementById("email"),
-subject = document.getElementById("subject"),
-message = document.getElementById("message"),
-submit =  document.getElementById("submit"),
-sent_message = document.querySelector("sent-message"),
-error_message = document.querySelector("error-message"),
-sucAlert = document.getElementById("sub-success"),
-inputErrorAlert = document.getElementById("sub-inputError"),
-errorAlert = document.getElementById("sub-Error");
+window.onload = function () {
+  document.getElementById("ServiceForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      //IDs
+      const serviceID = "service_3mah583",
+        templateID = "template_l7n12vg";
+      let success = document.getElementById("service_email_success"),
+        error = document.getElementById("service_email_error");
 
-const processForm = function () {
-    
-    /**
-     * This function validates inputs
-     */    
-     function validate() {
-      submit = addEventListener("click", (e) => {
-        e.preventDefault();
-  
-        if (full_name.value == "") {
-          inputError();
+      emailjs.sendForm(serviceID, templateID, this).then(
+        function () {
+          success.classList.remove("d-none");
+          success.style.color = "SeaGreen";
+          setTimeout(() => {
+            success.classList.add("d-none");
+          }, 2500);
+          clearForm();
+        },
+        function () {
+          error.classList.remove("d-none");
+          error.style.color = "Red";
+          setTimeout(() => {
+            error.classList.add("d-none");
+          }, 2500);
+          clearForm();
         }
-        else if(email.value == ""){
-            inputError();
-        }
-        else if(subject.value == ""){
-            inputError();
-        }
-        else if(message.value == ""){
-            inputError();
-        }
-        else {
-          sendMail();
-          success();
-        }
-      });
-    }
+      );
+    });
+};
 
-    /**Call function Validate */
-    validate();
+function clearForm() {
+  const name = document.getElementById("s_name"),
+    email = document.getElementById("s_email"),
+    subject = document.getElementById("s_subject"),
+    message = document.getElementById("s_message");
 
-
-    /** 
-     * This Function displays error 
-     **/
-    function error(){
-      errorAlert.classList.remove('d-none');
-      errorAlert.style.color = "red";
-      setTimeout(() => {
-        errorAlert.classList.add('d-none');
-      }, 2500)
-      
-    }
-
-    /** 
-     * Error Function
-     **/
-    function inputError(){
-      // subEmail.focus();
-      
-    }
-
-    /** 
-     * This Function displays a success  message and
-     * closes automatically
-     **/
-    function success(){
-      sucAlert.classList.remove('d-none');
-  
-      setTimeout(() => {
-        sucAlert.classList.add('d-none');
-      }, 2500)
-      }
-    
-
-    /** 
-     * This Function sends an email
-     * using the emailjs send() method
-     **/
-    function sendMail() {
-      emailjs.send("service_3mah583", "template_l7n12vg", {
-        from_name: full_name.value,
-        from_email: email.value,
-        from_subject: subject.value,
-        from_message: message.value,
-      });
-    }
-
-  }()
-  
+  (name.value = ""),
+    (email.value = ""),
+    (subject.value = ""),
+    (message.value = "");
+}

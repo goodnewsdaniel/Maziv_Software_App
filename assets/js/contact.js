@@ -1,14 +1,12 @@
 //Import Email Library
 import emailjs from "@emailjs/browser"
 window.onload = function () {
-  document
-    .getElementById("ContactForm")
-    .addEventListener("submit", function (event) {
+  document.getElementById("ContactForm").addEventListener("submit", function (event) {
       event.preventDefault();
       // these IDs from the previous
-      let serviceID = "service_3mah583",
-        templateID = "template_l7n12vg",
-        success = document.getElementById("email_success"),
+      const serviceID = "service_3mah583",
+        templateID = "template_l7n12vg";
+      let success = document.getElementById("email_success"),
         error = document.getElementById("email_error");
 
       emailjs.sendForm(serviceID, templateID, this).then(
@@ -18,6 +16,7 @@ window.onload = function () {
           setTimeout(() => {
             success.classList.add("d-none");
           }, 2500);
+          clearForm();
         },
         function () {
           error.classList.remove("d-none");
@@ -25,9 +24,9 @@ window.onload = function () {
           setTimeout(() => {
             error.classList.add("d-none");
           }, 2500);
+          clearForm();
         }
       );
-      clearForm();
     });
 };
 
