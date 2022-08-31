@@ -1,4 +1,10 @@
 (function (){
+
+
+  try {
+
+
+      
     document.getElementById("ContactForm").addEventListener("submit", function (event) {
       event.preventDefault();
       // these IDs from the previous
@@ -28,6 +34,9 @@
       );
     });
 
+  } catch (error) {
+    alert("Server not allowed."+error);
+  }
   //ClearForm
 function clearForm() {
   const name = document.getElementById("name"),
