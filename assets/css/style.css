@@ -972,7 +972,8 @@ h6 {
   }
 }
 
-#hero .animated {
+/* For Animating images for hero, skills, about us,etc. */
+.animated {
   animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
 
