@@ -1,8 +1,6 @@
 (function(){
 
   try {
-    
-
     document.getElementById("subscribeForm").addEventListener("submit", function (event) {
       event.preventDefault();
       //IDs

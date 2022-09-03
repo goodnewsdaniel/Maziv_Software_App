@@ -1,10 +1,6 @@
 (function (){
 
-
   try {
-
-
-      
     document.getElementById("ContactForm").addEventListener("submit", function (event) {
       event.preventDefault();
       // these IDs from the previous
